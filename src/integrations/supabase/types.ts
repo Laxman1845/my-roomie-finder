@@ -14,7 +14,183 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      favorites: {
+        Row: {
+          created_at: string
+          hostel_id: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          hostel_id: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          hostel_id?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_hostel_id_fkey"
+            columns: ["hostel_id"]
+            isOneToOne: false
+            referencedRelation: "hostels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hostel_photos: {
+        Row: {
+          created_at: string
+          hostel_id: string
+          id: string
+          photo_url: string
+          uploaded_by: string
+        }
+        Insert: {
+          created_at?: string
+          hostel_id: string
+          id?: string
+          photo_url: string
+          uploaded_by: string
+        }
+        Update: {
+          created_at?: string
+          hostel_id?: string
+          id?: string
+          photo_url?: string
+          uploaded_by?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "hostel_photos_hostel_id_fkey"
+            columns: ["hostel_id"]
+            isOneToOne: false
+            referencedRelation: "hostels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      hostels: {
+        Row: {
+          available: boolean
+          city: string
+          created_at: string
+          description: string | null
+          distance_from_college: string | null
+          facilities: string[]
+          gender: string
+          id: string
+          location: string
+          name: string
+          owner_contact: string | null
+          owner_id: string
+          owner_name: string | null
+          rent: number
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          available?: boolean
+          city: string
+          created_at?: string
+          description?: string | null
+          distance_from_college?: string | null
+          facilities?: string[]
+          gender: string
+          id?: string
+          location: string
+          name: string
+          owner_contact?: string | null
+          owner_id: string
+          owner_name?: string | null
+          rent: number
+          type: string
+          updated_at?: string
+        }
+        Update: {
+          available?: boolean
+          city?: string
+          created_at?: string
+          description?: string | null
+          distance_from_college?: string | null
+          facilities?: string[]
+          gender?: string
+          id?: string
+          location?: string
+          name?: string
+          owner_contact?: string | null
+          owner_id?: string
+          owner_name?: string | null
+          rent?: number
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      reviews: {
+        Row: {
+          comment: string | null
+          created_at: string
+          hostel_id: string
+          id: string
+          rating: number
+          user_id: string
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          hostel_id: string
+          id?: string
+          rating: number
+          user_id: string
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          hostel_id?: string
+          id?: string
+          rating?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_hostel_id_fkey"
+            columns: ["hostel_id"]
+            isOneToOne: false
+            referencedRelation: "hostels"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
