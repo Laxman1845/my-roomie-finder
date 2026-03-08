@@ -12,6 +12,7 @@ interface FilterBarProps {
   onTypeChange: (value: string) => void;
   selectedGender: string;
   onGenderChange: (value: string) => void;
+  cities: string[];
 }
 
 const FilterBar = ({
@@ -23,6 +24,7 @@ const FilterBar = ({
   onTypeChange,
   selectedGender,
   onGenderChange,
+  cities,
 }: FilterBarProps) => {
   return (
     <div className="rounded-xl border border-border bg-card p-4 md:p-6">
@@ -37,10 +39,9 @@ const FilterBar = ({
             <SelectTrigger><SelectValue placeholder="All Cities" /></SelectTrigger>
             <SelectContent>
               <SelectItem value="all">All Cities</SelectItem>
-              <SelectItem value="Bangalore">Bangalore</SelectItem>
-              <SelectItem value="Mumbai">Mumbai</SelectItem>
-              <SelectItem value="Delhi">Delhi</SelectItem>
-              <SelectItem value="Chennai">Chennai</SelectItem>
+              {cities.map(city => (
+                <SelectItem key={city} value={city}>{city}</SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
